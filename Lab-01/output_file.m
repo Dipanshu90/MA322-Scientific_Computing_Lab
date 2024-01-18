@@ -15,4 +15,34 @@ function output_file()
     
     fprintf('Newton Method for Q-3(a)\n');
     Newton(1.5,@f_3a, @f_3a_dash,1e-5);
+
+    fprintf('Newton Method for Q-3(b)\n');
+    Newton(1,@f_3b, @f_3b_dash,1e-5);
+
+    fprintf('Newton Method for Q-3(c)\n');
+    Newton(1,@f_3c, @f_3c_dash,1e-5);
+
+    fprintf('Newton Method for Q-3(d)\n');
+    Newton(6.5,@f_3d, @f_3d_dash,1e-5);
+
+    fprintf('Newton Method for Q-4\n');
+    Newton(1e-4,@f_4, @f_4_dash,1e-10);
+
+    fprintf('Newton Method for Q-5(a) in [-1,0]\n');
+    Newton(-0.5,@f_5, @f_5_dash,1e-6);
+
+    fprintf('Newton Method for Q-5(a) in [0,1]\n');
+    Newton(0.5,@f_5, @f_5_dash,1e-6);
+
+    fprintf('Bisection Method for Q-5(b) in [-1,0]\n');
+    Bisection(-1, 0, 1e-6,@f_5);
+
+    fprintf('Bisection Method for Q-5(b) in [0,1]\n');
+    Bisection(0, 1, 1e-6, @f_5);
+
+    fprintf('Newton Method for Q-6\n');
+    Newton(10,@f_6, @f_6_dash,1e-6);
+
+    fprintf('Newton Method for Q-7\n');
+    Newton(2,@f_7, @f_7_dash,1e-6);
 end
