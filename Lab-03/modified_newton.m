@@ -1,9 +1,7 @@
-function [root, itr] = modified_newton(x0, f, f1, f2, tolerance)
+function [root, itr] = modified_newton(x0, f, f1, f2, tolerance, str, a, b)
     max_itr = 1000;
     itr = 0;
     N = [];
-    N1 = [0];
-    Approx_soln = [x0];
     Error = [];
 
     v = f(x0);
@@ -27,8 +25,6 @@ function [root, itr] = modified_newton(x0, f, f1, f2, tolerance)
             itr = itr + 1;
             fprintf('%d\t\t\t%.15f\t%d\n', itr, x0, err);
             N = [N, itr];
-            N1 = [N1, itr];
-            Approx_soln = [Approx_soln, x0];
             Error = [Error, err];
             if itr == max_itr
                 break;
@@ -39,6 +35,21 @@ function [root, itr] = modified_newton(x0, f, f1, f2, tolerance)
         root = NaN;
     else 
         root = x1;
+    end
+    if itr > 1
+        figure
+        loglog(N, Error, 'LineWidth',2);
+        t = strcat('N vs Error Que-',str);
+        title(t)
+        xlabel('No. of iterations')
+        ylabel('Error')
+        
+        figure
+        fplot(@(x) f(x),[a,b],'LineWidth',2);        
+        hold on;
+        fplot(@(x) 0,[a,b],'LineStyle','--', 'Color',[0.5 0.5 0.5]);
+        t = strcat('Function Plot Que-',str);
+        title(t)
     end
     fprintf('\nThe required root is: %f\n', root);
     fprintf('The number of iterations performed: %d\n\n', itr);
