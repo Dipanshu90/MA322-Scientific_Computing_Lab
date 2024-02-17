@@ -33,13 +33,13 @@ function que3()
         
         [diff_mat, p(x)] = forward_diff(X,y,0);
         fprintf('The approximate value of f(%f) by forward difference is: %.8f\n', x0, double(subs(p,x,x0)));
-        figure
-        fplot(@(x) f(x), [-5,5], 'Linewidth', 2);
-        hold on;
-        fplot(@(x) p(x), [-5,5], 'Linewidth', 2);
-        legend('f(x)', 'p(x)');
-        title('Plot for interpolation');
-        hold off;
+        % figure
+        % fplot(@(x) f(x), [-5,5], 'Linewidth', 2);
+        % hold on;
+        % fplot(@(x) p(x), [-5,5], 'Linewidth', 2);
+        % legend('f(x)', 'p(x)');
+        % title('Plot for interpolation');
+        % hold off;
         Errors = [Errors, abs(f(x0) - double(subs(p,x,x0)))];
     end
     
