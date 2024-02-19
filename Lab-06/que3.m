@@ -4,7 +4,7 @@ function que3()
     f = @(x) 1/(1+x^2);
     x0 = double(1 + sqrt(10));
     Errors = [];
-    N = [1:10];
+    N = [1:70];
     
     for i = 1:10
         h = 10/i;
@@ -21,7 +21,7 @@ function que3()
     
     fprintf('Exact value of f(%f) is :- %.10f\n\n',x0, f(x0));
     
-    for i = 1:10
+    for i = 1:70
         h = 10/i;
         X = [];
         y = [];
@@ -33,13 +33,13 @@ function que3()
         
         [diff_mat, p(x)] = forward_diff(X,y,0);
         fprintf('The approximate value of f(%f) by forward difference is: %.8f\n', x0, double(subs(p,x,x0)));
-        % figure
-        % fplot(@(x) f(x), [-5,5], 'Linewidth', 2);
-        % hold on;
-        % fplot(@(x) p(x), [-5,5], 'Linewidth', 2);
-        % legend('f(x)', 'p(x)');
-        % title('Plot for interpolation');
-        % hold off;
+        figure
+        fplot(@(x) f(x), [-6,6], 'Linewidth', 2);
+        hold on;
+        fplot(@(x) p(x), [-6,6], 'Linewidth', 2);
+        legend('f(x)', 'p(x)');
+        title('Plot for interpolation');
+        hold off;
         Errors = [Errors, abs(f(x0) - double(subs(p,x,x0)))];
     end
     
