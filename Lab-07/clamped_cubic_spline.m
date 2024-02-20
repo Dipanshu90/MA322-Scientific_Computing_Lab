@@ -25,7 +25,7 @@ function [S,S_dash] = clamped_cubic_spline(X, f, FPO, FPN)
     for i=2:n-1
         l(1,i) = 2*(X(i+1) - X(i-1)) - h(i-1)*mu(1,i-1);
         mu(1,i) = h(i)/l(1,i);
-        z(1,i) = (alpha(i-1) - h(i-1)*z(1,i-1))/l(1,i);
+        z(1,i) = (alpha(i) - h(i-1)*z(1,i-1))/l(1,i);
     end
     l(1,n) = h(n-1)*(2-mu(n-1));
     z(1,n) = (alpha(n) - h(n-1)*z(n-1))/l(n);
