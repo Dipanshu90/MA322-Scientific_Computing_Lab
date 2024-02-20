@@ -6,7 +6,7 @@ function que5()
     
     % part (a)
     fprintf('Part-(a)\n\n');
-    [S,S_dash] = natural_cubic_spline(Time, Distance);
+    [S,S_dash] = natural_cubic_spline(Time, Distance,0);
     
     idx = find_index(Time, 10);
     fprintf('Approximate position of car by natural spline at t=10sec is :- %f\n', double(subs(S(idx),x,10)));
@@ -16,7 +16,7 @@ function que5()
 
     % part (b)
     fprintf('Part-(b)\n\n');
-    [S,S_dash] = clamped_cubic_spline(Time, Distance, 75, 72);
+    [S,S_dash] = clamped_cubic_spline(Time, Distance, 75, 72,0);
 
     fprintf('Approximate position of car by clamped spline at t=10sec is :- %f\n', double(subs(S(idx),x,10)));
     fprintf('Approximate speed of car by clamped spline at t=10sec is :- %f\n\n', double(subs(S_dash(idx),x,10)));

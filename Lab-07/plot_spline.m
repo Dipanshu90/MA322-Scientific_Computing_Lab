@@ -1,4 +1,4 @@
-function plot_spline(X,a,b,S,f,disp)
+function plot_spline(X,a,b,S,f,disp,lg,t)
     syms x
 
     n = length(X);
@@ -8,7 +8,6 @@ function plot_spline(X,a,b,S,f,disp)
         hold on;
     else
         fplot(S(1), [a,X(2)], 'LineWidth',2);
-        legend('S(x)');
         hold on;
         if n > 3
             for i=2:n-2
@@ -20,7 +19,8 @@ function plot_spline(X,a,b,S,f,disp)
     end 
     if disp == 1
         fplot(f,[a,b],'LineWidth',2);
-        legend('S(x)', 'f(x)');
+        legend(lg);
     end
+    title(t);
     hold off;
 end

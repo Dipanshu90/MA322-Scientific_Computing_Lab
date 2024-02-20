@@ -10,6 +10,9 @@ function output_file()
     fprintf('Question - 3\n');
     que3();
 
+    fprintf('Question - 4\n');
+    que4();
+
     fprintf('Question - 5\n');
     que5();
 end

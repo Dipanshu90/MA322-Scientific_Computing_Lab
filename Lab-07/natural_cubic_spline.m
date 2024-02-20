@@ -1,4 +1,4 @@
-function [S,S_dash] = natural_cubic_spline(X, f)
+function [S,S_dash] = natural_cubic_spline(X, f, disp)
     syms x
 
     n = length(X);
@@ -37,5 +37,12 @@ function [S,S_dash] = natural_cubic_spline(X, f)
     for i = 1:length(a)
         S = [S, a(i) + b(i)*(x-X(i)) + c(i)*(x - X(i))^2 + d(i)*(x - X(i))^3];
         S_dash = [S_dash, b(i) + 2*c(i)*(x - X(i)) + 3*d(i)*(x-X(i))^2];
+    end
+
+    if disp == 1
+        a
+        b
+        c
+        d
     end
 end

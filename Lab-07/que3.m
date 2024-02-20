@@ -12,7 +12,7 @@ function que3()
     X = [0, 0.5];
     f = fun(X);
 
-    [S,S_dash] = natural_cubic_spline(X,f);
+    [S,S_dash] = natural_cubic_spline(X,f,0);
 
     fprintf('Approximate value of f(0.43) by natural cubic spline is %f.\n', double(subs(S(find_index(X,0.43)),x,0.43)));
     fprintf('Approximate value of f''(0.43) by natural cubic spline is %f.\n\n', double(subs(S_dash(find_index(X,0.43)),x,0.43)));
@@ -20,9 +20,10 @@ function que3()
     fprintf('Actual Error in f(0.43) for natural spline is %d.\n', abs(fun(0.43) - double(subs(S(find_index(X,0.43)),x,0.43))));
     fprintf('Actual Error in f''(0.43) for natural spline is %d.\n\n', abs(fun_dash(0.43) - double(subs(S_dash(find_index(X,0.43)),x,0.43))));
     
-    plot_spline(X,-1.5,1.5,S,fun,1);
+    lg = {'S(x)', 'f(x)'};
+    plot_spline(X,-1.5,1.5,S,fun,1,lg,'Plot for Que-3(a) - natural spline');
 
-    [S,S_dash] = clamped_cubic_spline(X,f,fun_dash(X(1)), fun_dash(X(end)));
+    [S,S_dash] = clamped_cubic_spline(X,f,fun_dash(X(1)), fun_dash(X(end)),0);
 
     fprintf('Approximate value of f(0.43) by clamped cubic spline is %f.\n', double(subs(S(find_index(X,0.43)),x,0.43)));
     fprintf('Approximate value of f''(0.43) by clamped cubic spline is %f.\n\n', double(subs(S_dash(find_index(X,0.43)),x,0.43)));
@@ -30,7 +31,7 @@ function que3()
     fprintf('Actual Error in f(0.43) for clamped spline is %d.\n', abs(fun(0.43) - double(subs(S(find_index(X,0.43)),x,0.43))));
     fprintf('Actual Error in f''(0.43) for clamped spline is %d.\n\n', abs(fun_dash(0.43) - double(subs(S_dash(find_index(X,0.43)),x,0.43))));
 
-    plot_spline(X,-1.5,1.5,S,fun,1);
+    plot_spline(X,-1.5,1.5,S,fun,1,lg,'Plot for Que-3(a) - clamped spline');
 
     fprintf('_____________________________________________________________________________________________________\n\n');
 
@@ -44,7 +45,7 @@ function que3()
     X = [0, 0.5];
     f = fun(X);
 
-    [S,S_dash] = natural_cubic_spline(X,f);
+    [S,S_dash] = natural_cubic_spline(X,f,0);
 
     fprintf('Approximate value of f(0.25) by natural cubic spline is %f.\n', double(subs(S(find_index(X,0.25)),x,0.25)));
     fprintf('Approximate value of f''(0.25) by natural cubic spline is %f.\n\n', double(subs(S_dash(find_index(X,0.25)),x,0.25)));
@@ -52,9 +53,9 @@ function que3()
     fprintf('Actual Error in f(0.25) for natural spline is %d.\n', abs(fun(0.25) - double(subs(S(find_index(X,0.25)),x,0.25))));
     fprintf('Actual Error in f''(0.25) for natural spline is %d.\n\n', abs(fun_dash(0.25) - double(subs(S_dash(find_index(X,0.25)),x,0.25))));
 
-    plot_spline(X,-2.5,2.5,S,fun,1);
+    plot_spline(X,-2.5,2.5,S,fun,1,lg, 'Plot for Que-3(b) - natural spline');
 
-    [S,S_dash] = clamped_cubic_spline(X,f,fun_dash(X(1)), fun_dash(X(end)));
+    [S,S_dash] = clamped_cubic_spline(X,f,fun_dash(X(1)), fun_dash(X(end)),0);
 
     fprintf('Approximate value of f(0.25) by clamped cubic spline is %f.\n', double(subs(S(find_index(X,0.25)),x,0.25)));
     fprintf('Approximate value of f''(0.25) by clamped cubic spline is %f.\n\n', double(subs(S_dash(find_index(X,0.25)),x,0.25)));
@@ -62,5 +63,5 @@ function que3()
     fprintf('Actual Error in f(0.25) for clamped spline is %d.\n', abs(fun(0.25) - double(subs(S(find_index(X,0.25)),x,0.25))));
     fprintf('Actual Error in f''(0.25) for clamped spline is %d.\n\n', abs(fun_dash(0.25) - double(subs(S_dash(find_index(X,0.25)),x,0.25))));
 
-    plot_spline(X,-2.5,2.5,S,fun,1);
+    plot_spline(X,-2.5,2.5,S,fun,1,lg,'Plot for Que-3(b) - clamped spline');
 end
