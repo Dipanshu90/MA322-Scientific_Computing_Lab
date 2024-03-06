@@ -7,6 +7,7 @@ function comp_simp_rule(f,a,b,tol,str)
     n = 1;
     h = b-a;
     err = h;
+    val = 0;
     while 1
         h = (b-a)/n;
         X = a:h:b;
@@ -25,5 +26,6 @@ function comp_simp_rule(f,a,b,tol,str)
     end
     
     fprintf('Composite Simpsons Rule:- The value of n = %d and h = %d\n', n, h);
+    fprintf('The approximated value of the integral is:- %f\n', val);
     fprintf('The error value is:- %d\n\n', err);
 end
